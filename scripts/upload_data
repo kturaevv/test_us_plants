@@ -1,0 +1,11 @@
+#!/bin/sh -e
+
+echo "Uploading data..."
+python -c '
+from sqlalchemy import create_engine
+from src.plants.scripts import data_upload
+engine = create_engine("postgresql://app:app@app_db:5432/app")
+data_upload(engine)
+'
+
+echo "Setup complete!"
